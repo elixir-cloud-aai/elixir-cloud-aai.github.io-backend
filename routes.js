@@ -47,9 +47,9 @@ router.get('/', (req, res) => {
             message: 'Get all news',
             path: '/news',
             params: {
-                nextToken: {
+                next_token: {
                     message: 'Get next page of news',
-                    path: '/news?nextToken=:nextToken',
+                    path: '/news?next_token=:nextToken',
                 },
             },
         },
