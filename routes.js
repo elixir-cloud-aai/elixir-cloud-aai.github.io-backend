@@ -88,8 +88,8 @@ router.get('/news', async (req, res) => {
         const config = {
             headers: { Authorization: `Bearer ${process.env.TWITTER_TOKEN}` },
         }
-        const query = 'Covid19'
-        // ;('(%23elixir_cloud_aai OR %23elixircloudaai OR %23elixircloud_aai OR @ELIXIRcloud_aai has:mentions) OR ((%23cloudaai OR %23cloud_aai) (%23elixir OR %23elixireurope OR @ELIXIREurope has:mentions))')
+        const query =
+            '(%23elixir_cloud_aai OR %23elixircloudaai OR %23elixircloud_aai OR @ELIXIRcloud_aai has:mentions) OR ((%23cloudaai OR %23cloud_aai) (%23elixir OR %23elixireurope OR @ELIXIREurope has:mentions))'
         const nextValid = req.query.nextToken
             ? `&next_token=${req.query.nextToken}`
             : ''
