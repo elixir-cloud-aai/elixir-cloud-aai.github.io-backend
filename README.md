@@ -61,6 +61,22 @@ PORT=5000
 npm run dev
 ```
 
+#### Production Environment
+
+-   Create the [Notion](https://www.notion.so/) account & create the [Notion developers](https://developers.notion.com/) account with the same email. [Create a new integration](https://developers.notion.com/docs#step-1-create-an-integration) in your account & store the Internal Integration Token. [Link the integration](https://developers.notion.com/docs#step-2-share-a-database-with-your-integration) to the duplicated page in your account.
+
+-   Go to [Twitter API](https://developer.twitter.com/en/docs/twitter-api) & get your own API key.
+
+-   In the production env specify the following `env variables`:
+
+```bash
+PORT=8080
+NOTION_TOKEN=<YOUR-NOTION-TOKEN>
+TWITTER_TOKEN=<YOUR-TWITTER-API>
+```
+
+-   Deploy
+
 ## Versioning
 
 The project adopts the semantic versioning scheme for versioning. Currently the
