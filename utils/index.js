@@ -5,6 +5,9 @@ const getOverview = require('./overview')
 const getPartners = require('./partners')
 const getProduct = require('./product')
 const getProducts = require('./products')
+const getWcGetStarted = require('./web-components/get-started')
+const getWcContribute = require('./web-components/contribute')
+const getWcCommunity = require('./web-components/community')
 
 module.exports = {
     getContributors,
@@ -14,4 +17,7 @@ module.exports = {
     getPartners,
     getProduct,
     getProducts,
+    getWcGetStarted,
+    getWcContribute,
+    getWcCommunity,
 }

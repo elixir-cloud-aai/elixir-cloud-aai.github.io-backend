@@ -9,48 +9,67 @@ const {
     getPartners,
     getProduct,
     getProducts,
+    getWcGetStarted,
+    getWcContribute,
+    getWcCommunity,
 } = require('./utils')
 
 router.get('/', (req, res) => {
     res.send({
         message:
             'Welcome to the Elixir Cloud & AAI API. Browse the below routes.',
-        overview: {
-            message: 'Get the overview page',
-            path: '/overview',
-        },
-        contributors: {
-            message: 'Get all contributors',
-            path: '/contributors',
-        },
-        guide: {
-            message: 'Get a guide by id',
-            path: '/guide/:id',
-        },
-        guides: {
-            message: 'Get all guides',
-            path: '/guides',
-        },
-        partners: {
-            message: 'Get all partners',
-            path: '/partners',
-        },
-        product: {
-            message: 'Get a product by id',
-            path: '/product/:id',
-        },
-        products: {
-            message: 'Get all products',
-            path: '/products',
-        },
-        news: {
-            message: 'Get all news',
-            path: '/news',
-            params: {
-                next_token: {
-                    message: 'Get next page of news',
-                    path: '/news?next_token=:nextToken',
+        elixirCloudAai: {
+            overview: {
+                message: 'Get the overview page',
+                path: '/overview',
+            },
+            contributors: {
+                message: 'Get all contributors',
+                path: '/contributors',
+            },
+            guide: {
+                message: 'Get a guide by id',
+                path: '/guide/:id',
+            },
+            guides: {
+                message: 'Get all guides',
+                path: '/guides',
+            },
+            partners: {
+                message: 'Get all partners',
+                path: '/partners',
+            },
+            product: {
+                message: 'Get a product by id',
+                path: '/product/:id',
+            },
+            products: {
+                message: 'Get all products',
+                path: '/products',
+            },
+            news: {
+                message: 'Get all news',
+                path: '/news',
+                params: {
+                    next_token: {
+                        message: 'Get next page of news',
+                        path: '/news?next_token=:nextToken',
+                    },
                 },
+            },
+        },
+        webComponent: {
+            getStarted: {
+                message: 'Get all get started guides',
+                path: 'wc/get-started',
+            },
+            community: {
+                message: 'Get all community guides',
+                path: 'wc/community',
+            },
+            contribute: {
+                message: 'Get all contribute guides',
+                path: 'wc/contribute',
             },
         },
     })
@@ -135,6 +154,31 @@ router.get('/product/:id', async (req, res) => {
 router.get('/products', async (req, res) => {
     try {
         const data = await getProducts()
+        return res.send(data)
+    } catch (e) {
+        return res.send({ message: 'Server error', error: e })
+    }
+})
+
+router.get('/wc/get-started', async (req, res) => {
+    try {
+        const data = await getWcGetStarted()
+        return res.send(data)
+    } catch (e) {
+        return res.send({ message: 'Server error', error: e })
+    }
+})
+router.get('/wc/contribute', async (req, res) => {
+    try {
+        const data = await getWcContribute()
+        return res.send(data)
+    } catch (e) {
+        return res.send({ message: 'Server error', error: e })
+    }
+})
+router.get('/wc/community', async (req, res) => {
+    try {
+        const data = await getWcCommunity()
         return res.send(data)
     } catch (e) {
         return res.send({ message: 'Server error', error: e })
