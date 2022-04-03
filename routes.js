@@ -12,6 +12,7 @@ const {
     getWcGetStarted,
     getWcContribute,
     getWcCommunity,
+    getWcDocs,
 } = require('./utils')
 
 router.get('/', (req, res) => {
@@ -70,6 +71,10 @@ router.get('/', (req, res) => {
             contribute: {
                 message: 'Get all contribute guides',
                 path: 'wc/contribute',
+            },
+            documentation: {
+                message: 'Get all documentation guides',
+                path: 'wc/documentation/:query',
             },
         },
     })
@@ -179,6 +184,14 @@ router.get('/wc/contribute', async (req, res) => {
 router.get('/wc/community', async (req, res) => {
     try {
         const data = await getWcCommunity()
+        return res.send(data)
+    } catch (e) {
+        return res.send({ message: 'Server error', error: e })
+    }
+})
+router.get('/wc/docs/:query', async (req, res) => {
+    try {
+        const data = await getWcDocs(req.params.query)
         return res.send(data)
     } catch (e) {
         return res.send({ message: 'Server error', error: e })
