@@ -62,19 +62,19 @@ router.get('/', (req, res) => {
         webComponent: {
             getStarted: {
                 message: 'Get all get started guides',
-                path: 'wc/get-started',
+                path: '/wc/get-started',
             },
             community: {
                 message: 'Get all community guides',
-                path: 'wc/community',
+                path: '/wc/community',
             },
             contribute: {
                 message: 'Get all contribute guides',
-                path: 'wc/contribute',
+                path: '/wc/contribute',
             },
             documentation: {
                 message: 'Get all documentation guides',
-                path: 'wc/documentation/:query',
+                path: '/wc/docs/:query',
             },
         },
     })
