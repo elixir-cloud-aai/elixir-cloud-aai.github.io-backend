@@ -14,7 +14,10 @@ const getWcDocs = async (query) => {
             },
         }
         var data = await notion.request(payload)
-        const productsDBId = data.results[0].id
+        const productsDB = data.results.find((result) => {
+            return result.properties.title.title[0].plain_text == query
+        })
+        const productsDBId = productsDB.id
         payload = {
             path: `blocks/${productsDBId}/children`,
             method: `GET`,
